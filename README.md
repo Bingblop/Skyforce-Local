@@ -3,7 +3,7 @@
 <img src="app/src/res_breezy/mipmap-xxxhdpi/ic_launcher_round.webp" alt="Logo" />
 </div>
 
-<h1 align="center">Breezy Weather</h1>
+<h1 align="center">Skyforce Local</h1>
 
 <br />
 
