@@ -17,6 +17,8 @@
 package org.breezyweather.wallpaper
 
 import android.app.WallpaperColors
+import android.content.Context
+import android.content.res.Configuration
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import android.hardware.Sensor
@@ -244,10 +246,27 @@ class MaterialLiveWallpaperService : WallpaperService() {
             mDaytime = daytime
         }
 
+        /**
+         * Wallpaper colors should honor location-based dark mode. The system configuration is left
+         * untouched, and the original behavior is preserved when the preference is disabled.
+         * mDaytime already honors the wallpaper's explicit Day/Night override or the first
+         * location's sunrise/sunset in Automatic mode.
+         */
+        private fun getWallpaperContext(baseContext: Context): Context {
+            if (!SettingsManager.getInstance(baseContext).dayNightModeForLocations) {
+                return baseContext
+            }
+            val configuration = Configuration(baseContext.resources.configuration)
+            configuration.uiMode =
+                (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()) or
+                if (mDaytime) Configuration.UI_MODE_NIGHT_NO else Configuration.UI_MODE_NIGHT_YES
+            return baseContext.createConfigurationContext(configuration)
+        }
+
         private fun setWeatherImplementor() {
             hasDrawn = false
             mImplementor = WeatherImplementorFactory.getWeatherImplementor(
-                applicationContext,
+                getWallpaperContext(applicationContext),
                 mWeatherKind,
                 mDaytime,
                 mAdaptiveSize,
@@ -261,7 +280,7 @@ class MaterialLiveWallpaperService : WallpaperService() {
 
         private fun setWeatherBackgroundDrawable() {
             mBackground = ResourcesCompat.getDrawable(
-                resources,
+                getWallpaperContext(this@MaterialLiveWallpaperService).resources,
                 WeatherImplementorFactory.getBackgroundId(mWeatherKind, mDaytime),
                 null
             )

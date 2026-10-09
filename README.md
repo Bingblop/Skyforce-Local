@@ -207,3 +207,9 @@ Otherwise, remember to:
   - Change the app name in [`res_fork/values/strings.xml`](https://github.com/breezy-weather/breezy-weather/blob/main/app/src/res_fork/values/strings.xml)
   - Change the app icons in the [`res_fork`](https://github.com/breezy-weather/breezy-weather/blob/main/app/src/res_fork) folders
   - Avoid installation conflicts: change the `applicationId` in [`build.gradle.kts`](https://github.com/breezy-weather/breezy-weather/blob/main/app/build.gradle.kts#L25)
+
+## SkyLocal fork changes
+
+- **Wallpaper:** the live wallpaper now follows **Location-based dark mode → Follow day/night**. Daytime at the first saved location selects light backgrounds and animation shading even while the phone is in system dark mode; nighttime selects dark. With the setting off, the original behavior is unchanged. Wallpaper *Time* Always day / Always night remain explicit overrides.
+- **Identity:** non-Breezy builds use application ID `app.skylocal.test` and the name "SkyLocal Weather", so they install alongside official Breezy Weather.
+- **Releases:** APKs are signed with a separate SkyLocal key (certificate SHA-256 `2bc6d3e48e0ca8852dfdf255442addc744066a58dbe55edd4bb9bd69652dc74b`). This is an unofficial personal test build, not an upstream release. Not yet tested on a device.
