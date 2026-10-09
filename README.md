@@ -36,7 +36,7 @@
 </div>
 
 
-<h4 align="center">Breezy Weather is a feature-rich free and open source Material 3 Expressive weather app with well-thought-out visualizations, supporting forecast, observations, nowcasting, air quality, pollen, alerts, from more than 50 weather sources. <b>Skyforce Local is an exact replica of Breezy Weather except for one detail. When the setting "Location based dark-mode" is turned on under appearance, the live wallpaper will also follow this setting regardless of whether or not the phone is in dark mode or light mode. So during the day, the live wallpaper will use light mode themes, and at night, it will use dark mode themes. This is useful for people who keep their phone on dark mode all the time, but want a refreshing looking wallpaper during the day.</b></h4>
+<h4 align="center">Skyforce Local is an exact replica of Breezy Weather except for one detail. When the setting "Location based dark-mode" is turned on under appearance, the live wallpaper will also follow this setting regardless of whether or not the phone is in dark mode or light mode. So during the day, the live wallpaper will use light mode themes, and at night, it will use dark mode themes. This is useful for people who keep their phone on dark mode all the time, but want a refreshing looking wallpaper during the day. This can be installed alongside Breezy Weather as well.</h4>
 
 <div align="center">
 
